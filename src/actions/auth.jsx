@@ -1,4 +1,4 @@
-import { types } from '../config/constant';
+import { types, URL_IMG } from '../config/constant';
 import axios from '../config/axios';
 import Swal from 'sweetalert2';
 import { store } from '../store/store'
@@ -55,23 +55,23 @@ export const loginUserPassword = (username, password) => {
             }).catch(err => {
                 console.log(err);
                 messageError('Ocurrio un error, por favor vuelva a intentarlo mas tarde');
-                
+
             })
 
     }
 
 }
 
-export const signUp = (username, password, name, img) => {
+export const signUp = (data) => {
 
     return (dispatch) => {
 
         axios.post('/user/signup',
             {
-                username,
-                password,
-                name,
-                img
+                username: data.username,
+                password: data.userPassword,
+                name: data.name,
+                img: URL_IMG,
             }
         ).then(res => {
 
@@ -84,12 +84,12 @@ export const signUp = (username, password, name, img) => {
 
                 Swal.fire({
                     icon: 'success',
-                    title: 'Listo!',
-                    text: 'El usuario fue creado exitosamente!',
-                    footer: 'Copyright © 2023 - Todos los derechos reservados',
+                    title: 'Great!',
+                    text: 'The user has been successfully created!',
+                    footer: 'SERVIMAINPER © 2023 - All rights reserved',
                 }).then(data => {
 
-                    window.location.href = '/login';
+                    window.location.href = '/';
 
                 });
 
@@ -97,7 +97,51 @@ export const signUp = (username, password, name, img) => {
 
         }).catch(err => {
 
-            messageError('Ocurrio un error, por favor vuelva a intentarlo mas tarde');
+            messageError('An error occurred, please try again later.');
+
+        })
+
+    }
+
+}
+
+export const createClient = (data) => {
+
+    return (dispatch) => {
+
+        axios.post('/client',
+            {
+                dni: data.dni,
+                name: data.name,
+                lastname: data.lastname,
+                phone: data.phone,
+                email: data.email
+            }
+        ).then(res => {
+
+            if (!res.data.ok) {
+
+                messageError(res.data.message);
+
+
+            } else {
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Great!',
+                    text: 'The client has been successfully created!',
+                    footer: 'SERVIMAINPER © 2023 - All rights reserved',
+                }).then(data => {
+
+                    window.location.href = '/';
+
+                });
+
+            }
+
+        }).catch(err => {
+
+            messageError('An error occurred, please try again later.');
 
         })
 
@@ -110,6 +154,7 @@ export const startLogout = () => {
         localStorage.setItem('token', '');
         localStorage.setItem('name', '');
         dispatch(logout());
+
     }
 }
 
@@ -118,12 +163,15 @@ export const logout = () => ({
     type: types.logout
 })
 
-export const updateName = (name) => {
+/* export const createUser = (user) => {
 
     return (dispatch) => {
 
-
-        axios.put('/user/name', { name })
+        axios.post('/user/signup',
+            { 
+            
+            }
+        )
             .then(data => {
 
                 if (data.data.ok) {
@@ -134,13 +182,9 @@ export const updateName = (name) => {
                         footer: 'Copyright © 2023 - Todos los derechos reservados',
                     }).then(data => {
 
-                        localStorage.setItem("name", name);
-                        store.dispatch(changeName(name));
                         window.location.href = '/';
 
                     });
-
-
 
                 } else {
 
@@ -156,4 +200,4 @@ export const updateName = (name) => {
 
     }
 
-}
+} */

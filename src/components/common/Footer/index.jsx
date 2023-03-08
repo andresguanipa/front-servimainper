@@ -17,17 +17,13 @@ const Footer = () => {
         <footer className='footer'>
 
             <div className="footer-content">
-                <h3>Ing. Andrés Guanipa</h3>
-                <p>Full-Stack Developer | Software Engineer</p>
+                <h3>SERVICES AND MAINTENANCE PEROZO LLC</h3>
+                <p>© 2023. All Rights Reserved</p>
             </div>
             <div className="footer-bottom">
                 <p>
-
-
-
-                    <a href="/blog"><b>Inicio</b></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    <a href="/blog/upload"><b>Publicar</b></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    <a href="/blog/profile"><b>Editar Perfil</b></a>
+                    <a href="/"><b>Home</b></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <a href="/profile"><b>Register</b></a>
                 </p>
                 
                 <div className="footer-menu">

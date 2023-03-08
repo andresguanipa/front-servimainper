@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../config/axios';
 import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateName } from '../../actions/auth'
+import { signUp, createClient } from '../../actions/auth'
 import './styles.css';
 import { disableButton, enableButton, messageError, TabTitle } from '../../utils/GeneralFunctions';
 
@@ -11,26 +11,57 @@ const Profile = () => {
    const dispatch = useDispatch();
    const state = useSelector(state => state);
 
+   const formUser = {
+      name: '',
+      username: '',
+      userPassword: '',
+      userNewPassword: ''
+
+   }
+
    const formPassword = {
       currentPassword: '',
       newPassword: '',
       repeatNewPassword: '',
    }
 
-   const [formData, setFormData] = useState(formPassword);
-   const [name, setName] = useState(state.auth.firstname);
+   const formClient = {
+      dni: '',
+      name: '',
+      lastname: '',
+      phone: '',
+      email: ''
+   }
+
+   const [formData1, setFormDataUser] = useState(formUser);
+   const [formData2, setFormDataPassword] = useState(formPassword);
+   const [formData3, setFormDataClient] = useState(formClient);
    const [category, setCategory] = useState("1");
 
-   const handleChangePassword = (e) => {
-      setFormData({
-         ...formData,
+   const handleChangeUser = (e) => {
+
+      setFormDataUser({
+         ...formData1,
          [e.target.name]: e.target.value
       })
    }
 
-   const handleChangeName = (e) => {
-      setName(e.target.value);
+   const handleChangePassword = (e) => {
+
+      setFormDataPassword({
+         ...formData2,
+         [e.target.name]: e.target.value
+      });
    }
+
+   const handleChangeClient = (e) => {
+
+      setFormDataClient({
+         ...formData3,
+         [e.target.name]: e.target.value
+      });
+   }
+
 
 
    const handleChangeCategory = (e) => {
@@ -50,25 +81,32 @@ const Profile = () => {
 
       if (category === "1") {
 
-         if (name !== "") {
+         if (formData1.name !== "" && formData1.username !== "" && formData1.password != "" && formData1.userNewPassword != "") {
+            if (formData1.userPassword === formData1.userNewPassword && formData1.userPassword.length >= 6) {
 
-            dispatch(updateName(name));
+               dispatch(signUp(formData1));
+
+            } else {
+
+               messageError('Passwords must match and contain more than 6 characters!');
+
+            }
 
          } else {
 
-            messageError('El nombre no puede estar vacio');
+            messageError('Please, fill up all fields');
 
          }
 
-      } else {
+      } else if (category === "2") {
 
-         if (formData.currentPassword === '' || formData.newPassword === '' || formData.repeatNewPassword === '') {
+         if (formData2.currentPassword === '' || formData2.newPassword === '' || formData2.repeatNewPassword === '') {
 
             messageError('Por favor, llene todos los campos.');
 
          } else {
 
-            if (formData.newPassword !== formData.repeatNewPassword || formData.newPassword.length < 6) {
+            if (formData2.newPassword !== formData2.repeatNewPassword || formData2.newPassword.length < 6) {
 
                messageError('Las contraseñas deben coincidir y ser mayor a 5 caracteres');
 
@@ -76,20 +114,20 @@ const Profile = () => {
 
                axios.put('/user/password',
                   {
-                     newPassword: formData.newPassword,
-                     password: formData.currentPassword
+                     newPassword: formData2.newPassword,
+                     password: formData2.currentPassword
                   }
                ).then(data => {
 
                   if (data.data.ok) {
                      Swal.fire({
                         icon: 'success',
-                        title: 'Genial!',
-                        text: 'La contraseña ha sido cambiada exitosamente',
-                        footer: 'Copyright © 2023 - Todos los derechos reservados',
+                        title: 'Great!',
+                        text: 'Your password have been changed successfully',
+                        footer: 'SERVIMAINPER © 2023 - Todos los derechos reservados',
                      }).then(data => {
 
-                        window.location.href = '/blog';
+                        window.location.href = '/';
 
                      });
 
@@ -109,8 +147,21 @@ const Profile = () => {
 
          }
 
+      } else {
+
+         if (formData3.name !== "" && formData3.lastname !== "" && formData3.phone != "" && formData3.email != "" && formData3.dni != "") {
+
+               dispatch(createClient(formData3));
+
+         } else {
+
+            messageError('Please, fill up all fields');
+
+         }
+
+
       }
-      
+
       enableButton();
 
    }
@@ -121,7 +172,7 @@ const Profile = () => {
          <div className='profile'>
             <div className="wrapper">
                <div className="title">
-                  Editar perfil
+                  Actions
                </div>
 
                <div className="field prof-image">
@@ -132,13 +183,17 @@ const Profile = () => {
                <br />
 
                <div className="select">
-                  <label>¿Que desea editar?</label>
+                  <label className='question'>What do you wanna do?</label>
                   <select name="category" className='feedback-input-profile' onChange={handleChangeCategory} required>
-                     <option value="1" defaultValue>Nombre</option>
-                     <option value="2">Contraseña</option>
+                     <option value="1" defaultValue>Register a new user</option>
+                     <option value="2">Change password</option>
+                     <option value="3">Register a costumer</option>
                   </select>
                </div>
 
+               <br />
+               <hr />
+               <br />
 
                <form onSubmit={onSubmitForm}>
 
@@ -148,42 +203,100 @@ const Profile = () => {
 
                         <>
                            <div className="field">
-                              <input type="text" name="name" onChange={handleChangeName} value={name} required></input>
-                              <label>Nombre</label>
+                              <input type="text" name="name" onChange={handleChangeUser} value={formData1.name} required></input>
+                              <label>Name</label>
+                           </div>
+
+                           <div className="field">
+                              <input type="text" name="username" onChange={handleChangeUser} value={formData1.username} required></input>
+                              <label>Username</label>
+                           </div>
+
+                           <div className="field">
+                              <input type="password" name="userPassword" onChange={handleChangeUser} value={formData1.userPassword} required></input>
+                              <label>Password</label>
+                           </div>
+
+                           <div className="field">
+                              <input type="password" name="userNewPassword" onChange={handleChangeUser} value={formData1.userNewPassword} required></input>
+                              <label>Repeat Password</label>
                            </div>
                            <br />
 
                            <div className="field">
-                              <input type="submit" value="Cambiar nombre" id='submit-button'></input>
+                              <input type="submit" value="Register" id='submit-button'></input>
                            </div>
                            <br />
                         </>
 
                         :
+                        (
 
-                        <>
-                           <div className="field">
-                              <input type="password" name="currentPassword" onChange={handleChangePassword} value={formData.currentPassword} autoComplete="on" required></input>
-                              <label>Contraseña actual</label>
-                           </div>
+                           category === "2" ?
 
-                           <div className="field">
-                              <input type="password" name="newPassword" onChange={handleChangePassword} value={formData.newPassword} autoComplete="on" required></input>
-                              <label>Nueva contraseña</label>
-                           </div>
+                              <>
+                                 <div className="field">
+                                    <input type="password" name="currentPassword" onChange={handleChangePassword} value={formData2.currentPassword} autoComplete="on" required></input>
+                                    <label>Current password</label>
+                                 </div>
 
-                           <div className="field">
-                              <input type="password" name="repeatNewPassword" onChange={handleChangePassword} value={formData.repeatNewPassword} autoComplete="on" required></input>
-                              <label>Repetir nueva contraseña</label>
-                           </div>
-                           <br />
+                                 <div className="field">
+                                    <input type="password" name="newPassword" onChange={handleChangePassword} value={formData2.newPassword} autoComplete="on" required></input>
+                                    <label>New Password</label>
+                                 </div>
 
-                           <div className="field">
-                              <input type="submit" value="Cambiar contraseña" id='submit-button'></input>
-                           </div>
-                           <br />
+                                 <div className="field">
+                                    <input type="password" name="repeatNewPassword" onChange={handleChangePassword} value={formData2.repeatNewPassword} autoComplete="on" required></input>
+                                    <label>Repeat new password</label>
+                                 </div>
+                                 <br />
 
-                        </>
+                                 <div className="field">
+                                    <input type="submit" value="Change password" id='submit-button'></input>
+                                 </div>
+                                 <br />
+
+                              </>
+
+                              :
+
+                              <>
+                                 <div className="field">
+                                    <input type="text" name="dni" onChange={handleChangeClient} value={formData3.dni} autoComplete="on" required></input>
+                                    <label>DNI</label>
+                                 </div>
+
+                                 <div className="field">
+                                    <input type="text" name="name" onChange={handleChangeClient} value={formData3.name} autoComplete="on" required></input>
+                                    <label>Name</label>
+                                 </div>
+
+                                 <div className="field">
+                                    <input type="text" name="lastname" onChange={handleChangeClient} value={formData3.lastname} autoComplete="on" required></input>
+                                    <label>Lastname</label>
+                                 </div>
+
+                                 <div className="field">
+                                    <input type="text" name="phone" onChange={handleChangeClient} value={formData3.phone} autoComplete="on" required></input>
+                                    <label>Phone</label>
+                                 </div>
+
+                                 <div className="field">
+                                    <input type="text" name="email" onChange={handleChangeClient} value={formData3.email} autoComplete="on" required></input>
+                                    <label>E-mail</label>
+                                 </div>
+                                 <br />
+
+                                 <div className="field">
+                                    <input type="submit" value="Register" id='submit-button'></input>
+                                 </div>
+                                 <br />
+
+                              </>
+
+                        )
+
+
 
                   }
 

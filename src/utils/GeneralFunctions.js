@@ -25,7 +25,7 @@ export const messageError = (message) => {
     icon: 'error',
     title: 'Error',
     text: message,
-    footer: 'Copyright © 2023 - Todos los derechos reservados',
+    footer: 'SERVIMAINPER © 2023 - Todos los derechos reservados',
   })
 
 }
