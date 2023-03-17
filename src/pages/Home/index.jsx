@@ -39,7 +39,7 @@ const Home = () => {
 
 
 
-  TabTitle(`Blog Venezuela`);
+  TabTitle(`Home`);
 
   return (
 

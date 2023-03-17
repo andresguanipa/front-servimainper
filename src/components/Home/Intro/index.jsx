@@ -11,7 +11,7 @@ const Intro = () => {
     return (
 
         <div className='intro'>
-            <h2 data-aos="fade-right" data-aos-delay="350" data-aos-duration="900"><i>SERVICES AND MAINTENANCE PEROZO LLC</i></h2>
+            <h2 data-aos="fade-right" data-aos-delay="350" data-aos-duration="900">SERVICES AND MAINTENANCE PEROZO LLC</h2>
             <img src={image} alt="intro-steve" className='steve' />
         </div>
 

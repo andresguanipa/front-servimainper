@@ -10,14 +10,14 @@
 }
 
 .intro h2 {
-    color: black;
+    color: #424242;
     font-size: 4rem;
     font-weight: 700;
     position: absolute;
     margin-top: 13%;
     margin-left: 15%;
     width: 70%;
-    text-shadow: 10px 10px 12px rgba(168, 168, 168, 0.8);
+    text-shadow: 10px 10px 12px #fff;
     text-align: center;
     z-index: 9999;
 }

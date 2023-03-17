@@ -70,7 +70,7 @@ const Profile = () => {
 
    useEffect(() => {
 
-      TabTitle(`Perfil | Blog Venezuela`);
+      TabTitle(`Register`);
 
    }, [])
 
@@ -80,6 +80,7 @@ const Profile = () => {
       disableButton();
 
       if (category === "1") {
+
 
          if (formData1.name !== "" && formData1.username !== "" && formData1.password != "" && formData1.userNewPassword != "") {
             if (formData1.userPassword === formData1.userNewPassword && formData1.userPassword.length >= 6) {

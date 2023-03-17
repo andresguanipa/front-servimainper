@@ -18,7 +18,7 @@ const Login = () => {
 
    useEffect(() => {
 
-      TabTitle(`Login | Blog Venezuela`);
+      TabTitle(`Login | SERVIMAINPER`);
 
    }, [])
 
