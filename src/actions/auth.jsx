@@ -3,6 +3,7 @@ import axios from '../config/axios';
 import Swal from 'sweetalert2';
 import { store } from '../store/store'
 import { messageError } from '../utils/GeneralFunctions';
+import { routes } from '../config/routes';
 
 
 export const login = (id, username, firstname, img, token) => ({
@@ -47,7 +48,7 @@ export const loginUserPassword = (username, password) => {
                     localStorage.setItem('token', res.data.token);
                     localStorage.setItem('name', res.data.usuario.name)
 
-                    window.location.href = '/';
+                    window.location.href = routes.home;
 
                 }
 
@@ -89,7 +90,7 @@ export const signUp = (data) => {
                     footer: 'SERVIMAINPER © 2023 - All rights reserved',
                 }).then(data => {
 
-                    window.location.href = '/';
+                    window.location.href = routes.home;
 
                 });
 
@@ -133,7 +134,7 @@ export const createClient = (data) => {
                     footer: 'SERVIMAINPER © 2023 - All rights reserved',
                 }).then(data => {
 
-                    window.location.href = '/';
+                    window.location.href = routes.home;
 
                 });
 
@@ -162,42 +163,3 @@ export const startLogout = () => {
 export const logout = () => ({
     type: types.logout
 })
-
-/* export const createUser = (user) => {
-
-    return (dispatch) => {
-
-        axios.post('/user/signup',
-            { 
-            
-            }
-        )
-            .then(data => {
-
-                if (data.data.ok) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Genial!',
-                        text: 'El nombre ha sido cambiado exitosamente',
-                        footer: 'Copyright © 2023 - Todos los derechos reservados',
-                    }).then(data => {
-
-                        window.location.href = '/';
-
-                    });
-
-                } else {
-
-                    messageError(data.data.message);
-
-                }
-
-            }).catch(err => {
-
-                messageError('Ha ocurrido un error, por favor vuelve a intentarlo más tarde');
-
-            });
-
-    }
-
-} */

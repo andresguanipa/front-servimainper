@@ -7,10 +7,18 @@ const types = {
     logout: '[Auth] Logout',
 }
 
+const routes = {
+    login: '/front-servimainper/login',
+    home: '/front-servimainper/',
+    payment: '/front-servimainper/payment/:id',
+    register: '/front-servimainper/register',
+}
+
 
 export {
     URL_API,
     URL_IMG,
-    types
+    types,
+    routes
 }
 

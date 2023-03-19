@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { startLogout } from '../../../actions/auth'
+import { routes } from '../../../config/routes';
 import './styles.css';
 
 const Footer = () => {
@@ -22,10 +23,10 @@ const Footer = () => {
             </div>
             <div className="footer-bottom">
                 <p>
-                    <a href="/"><b>Home</b></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    <a href="/profile"><b>Register</b></a>
+                    <a href={routes.home}><b>Home</b></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <a href={routes.register}><b>Register</b></a>
                 </p>
-                
+
                 <div className="footer-menu">
                     <ul className="f-menu">
 

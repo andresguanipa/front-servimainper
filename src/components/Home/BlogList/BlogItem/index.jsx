@@ -33,7 +33,7 @@ const BlogItem = ({
 
 
       <div className='blogItem-wrap' key={idPayment} data-aos="fade-right" data-aos-duration="1200">
-        <Link className='blogItem-link' to={`/blog/${idPayment}`}>
+        <Link className='blogItem-link' to={`/front-servimainper/payment/${idPayment}`}>
           <img className='blogItem-cover' src={billImage} alt='cover' loading='lazy' />
 
 {/*           <Chip label={categories} />

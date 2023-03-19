@@ -5,11 +5,9 @@ import axios, { generateToken } from '../config/axios'
 import { PublicRoutes } from './PublicRoutes';
 import { PrivateRoutes } from './PrivateRoutes';
 import Login from '../pages/Login';
-import Upload from '../pages/Upload';
-import SignUp from '../pages/SignUp';
 import LoggedRoutes from './LoggedRoutes'
 import { login, startLogout } from '../actions/auth';
-import NotFound from '../pages/NotFound';
+import { routes } from '../config/routes';
 
 function AppRouter() {
 
@@ -53,15 +51,9 @@ function AppRouter() {
     return (
         <Routes>
 
-            <Route path="/login" element={
+            <Route path={routes.login} element={
                 <PublicRoutes>
                     <Login />
-                </PublicRoutes>
-            } />
-
-            <Route path="/payment" element={
-                <PublicRoutes>
-                    <Upload />                
                 </PublicRoutes>
             } />
 

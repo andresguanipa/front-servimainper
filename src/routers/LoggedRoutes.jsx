@@ -5,15 +5,15 @@ import Home from '../pages/Home';
 import Profile from '../pages/Profile';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
+import { routes } from '../config/routes';
 
 function LoggedRoutes() {
 
     return (
         <Routes>
-            <Route path='/' exact element={<Home />} />
-            <Route path='/blog/:id' element={<Blog />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/signup' element={<SignUp />} />
+            <Route path={routes.home} exact element={<Home />} />
+            <Route path={routes.payment} element={<Blog />} />
+            <Route path={routes.register} element={<Profile />} />
             <Route path='/*' element={<NotFound />}></Route>
         </Routes>
     )
