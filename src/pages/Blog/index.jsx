@@ -50,9 +50,11 @@ const Blog = () => {
             confirmationNumber: res.data.data.confirmationNumber
           });
 
-          TabTitle(`${res.data.data.title} | Blog Venezuela`);
+          TabTitle(`${res.data.data.title} | SERVIMAINPER`);
 
         } else {
+
+          
 
           setBlog({ data: false });
           navigate("../", { replace: true });
