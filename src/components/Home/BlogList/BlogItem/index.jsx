@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Chip from '../../../common/Chip';
 import './styles.css';
-import { Markup } from 'interweave';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { URL_IMG } from '../../../../config/constant';

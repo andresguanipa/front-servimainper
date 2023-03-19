@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { startLogout } from '../../../actions/auth'
 import { routes } from '../../../config/constant';
+import { Link } from 'react-router-dom';
 import './styles.css';
 
 const Footer = () => {
@@ -23,8 +24,12 @@ const Footer = () => {
             </div>
             <div className="footer-bottom">
                 <p>
-                    <a href={routes.home}><b>Home</b></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    <a href={routes.register}><b>Register</b></a>
+                    <Link className='blogItem-link' to={routes.home}>
+                        <a><b>Home</b></a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    </Link>
+                    <Link className='blogItem-link' to={routes.register}>
+                        <a><b>Register</b></a>
+                    </Link>
                 </p>
 
                 <div className="footer-menu">
