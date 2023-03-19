@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/front-servimainper/static/css/main.d77783eb.css",
+    "main.js": "/front-servimainper/static/js/main.e2ab74f4.js",
+    "static/media/13525-empty.gif": "/front-servimainper/static/media/13525-empty.892e3c962daac6591a52.gif",
+    "static/media/back-8.png": "/front-servimainper/static/media/back-8.abd263ec3c15631e8da5.png",
+    "static/media/back-7.png": "/front-servimainper/static/media/back-7.969b572eb725ee25639c.png",
+    "static/media/back-6.png": "/front-servimainper/static/media/back-6.2b6455386a0b34bf2c60.png",
+    "static/media/back-4.png": "/front-servimainper/static/media/back-4.802b521bcebc273145ba.png",
+    "static/media/steve2.png": "/front-servimainper/static/media/steve2.d454f9f84de33f4d0653.png",
+    "static/media/steve3.png": "/front-servimainper/static/media/steve3.1c0162d917b2a2924749.png",
+    "static/media/steve.png": "/front-servimainper/static/media/steve.dc9c1673f978b551085a.png",
+    "index.html": "/front-servimainper/index.html",
+    "main.d77783eb.css.map": "/front-servimainper/static/css/main.d77783eb.css.map",
+    "main.e2ab74f4.js.map": "/front-servimainper/static/js/main.e2ab74f4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d77783eb.css",
+    "static/js/main.e2ab74f4.js"
+  ]
+}
