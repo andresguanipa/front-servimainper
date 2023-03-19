@@ -6,6 +6,7 @@ import { TabTitle } from '../../utils/GeneralFunctions';
 import { Markup } from 'interweave';
 import axios from '../../config/axios';
 import { Roller } from '../../components/common/Roller';
+import { routes } from '../../config/constant';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -54,7 +55,7 @@ const Blog = () => {
 
         } else {
 
-          
+
 
           setBlog({ data: false });
           navigate("../", { replace: true });
@@ -71,42 +72,42 @@ const Blog = () => {
 
   return (
 
-      <div className='container'>
-        <Link className='blog-goBack' to='/'>
-          <span className='blog-goBack-arrow'> &#8592;</span> <span className='blog-goBack-text' >Volver</span>
-        </Link>
+    <div className='container'>
+      <Link className='blog-goBack' to={routes.home}>
+        <span className='blog-goBack-arrow'> &#8592;</span> <span className='blog-goBack-text' >Volver</span>
+      </Link>
 
-        {
-          blog.data === true ?
+      {
+        blog.data === true ?
 
-            (
-              <div className='blog-wrap' data-aos-delay="200" data-aos="fade-right">
-                <header>
-                  <p className='blog-date'>Publicado el {blog.createdAt}</p>
-                  <h1>Client: {blog.client} (DNI: {blog.dni})</h1>
-                  <br />
-                </header>
-                <img src={blog.billImage} alt='cover' className='blog-img' />
+          (
+            <div className='blog-wrap' data-aos-delay="200" data-aos="fade-right">
+              <header>
+                <p className='blog-date'>Publicado el {blog.createdAt}</p>
+                <h1>Client: {blog.client} (DNI: {blog.dni})</h1>
                 <br />
-                <br />
+              </header>
+              <img src={blog.billImage} alt='cover' className='blog-img' />
+              <br />
+              <br />
 
-                <Markup className='blog-content' content={`<b>Amount:</b> ${blog.amount}`} />
-                <br />
-                <Markup className='blog-content' content={`<b>Confirmation Number:</b> ${blog.confirmationNumber}`} />
-                <br />
+              <Markup className='blog-content' content={`<b>Amount:</b> ${blog.amount}`} />
+              <br />
+              <Markup className='blog-content' content={`<b>Confirmation Number:</b> ${blog.confirmationNumber}`} />
+              <br />
 
-                <hr />
-                <br />
+              <hr />
+              <br />
 
 
-              </div>
-            )
-            :
-            (
-              <Roller />
-            )
-        }
-      </div>
+            </div>
+          )
+          :
+          (
+            <Roller />
+          )
+      }
+    </div>
 
 
   );
