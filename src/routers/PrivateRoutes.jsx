@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
+import { routes } from '../config/constant'
 
 export const PrivateRoutes = ({ children }) => {
 
@@ -7,6 +8,6 @@ export const PrivateRoutes = ({ children }) => {
 
     return auth !== '' ?
         children
-        : <Navigate to="/login" />
+        : <Navigate to={routes.login} />
 
 }

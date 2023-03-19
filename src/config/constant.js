@@ -12,8 +12,8 @@ const routes = {
     home: '/front-servimainper/',
     payment: '/front-servimainper/payment/:id',
     register: '/front-servimainper/register',
+    notFound: '/*',
 }
-
 
 export {
     URL_API,

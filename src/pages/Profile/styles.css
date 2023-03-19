@@ -9,7 +9,8 @@
   height: 600px;
   width: 100%;
   place-items: center;
-
+  margin-bottom: 500px;
+  margin-top: 50px;
 }
 
 .profile-image {

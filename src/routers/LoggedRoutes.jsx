@@ -4,8 +4,7 @@ import Blog from '../pages/Blog';
 import Home from '../pages/Home';
 import Profile from '../pages/Profile';
 import NotFound from '../pages/NotFound';
-import SignUp from '../pages/SignUp';
-import { routes } from '../config/routes';
+import { routes } from '../config/constant';
 
 function LoggedRoutes() {
 
@@ -14,7 +13,7 @@ function LoggedRoutes() {
             <Route path={routes.home} exact element={<Home />} />
             <Route path={routes.payment} element={<Blog />} />
             <Route path={routes.register} element={<Profile />} />
-            <Route path='/*' element={<NotFound />}></Route>
+            <Route path={routes.notFound} element={<NotFound />}></Route>
         </Routes>
     )
 

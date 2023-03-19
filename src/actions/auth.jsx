@@ -3,7 +3,7 @@ import axios from '../config/axios';
 import Swal from 'sweetalert2';
 import { store } from '../store/store'
 import { messageError } from '../utils/GeneralFunctions';
-import { routes } from '../config/routes';
+import { routes } from '../config/constant';
 
 
 export const login = (id, username, firstname, img, token) => ({
@@ -44,9 +44,11 @@ export const loginUserPassword = (username, password) => {
 
                 } else {
 
-                    dispatch(login(res.data.usuario.id, res.data.usuario.username, res.data.usuario.name, res.data.usuario.img, res.data.token));
                     localStorage.setItem('token', res.data.token);
-                    localStorage.setItem('name', res.data.usuario.name)
+                    localStorage.setItem('name', res.data.usuario.name);
+
+                    
+                    dispatch(login(res.data.usuario.id, res.data.usuario.username, res.data.usuario.name, res.data.usuario.img, res.data.token));
 
                     window.location.href = routes.home;
 
@@ -155,7 +157,6 @@ export const startLogout = () => {
         localStorage.setItem('token', '');
         localStorage.setItem('name', '');
         dispatch(logout());
-
     }
 }
 

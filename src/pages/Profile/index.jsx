@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signUp, createClient } from '../../actions/auth'
 import './styles.css';
 import { disableButton, enableButton, messageError, TabTitle } from '../../utils/GeneralFunctions';
+import Footer from '../../components/common/Footer';
 
 const Profile = () => {
 
@@ -82,7 +83,7 @@ const Profile = () => {
       if (category === "1") {
 
 
-         if (formData1.name !== "" && formData1.username !== "" && formData1.password != "" && formData1.userNewPassword != "") {
+         if (formData1.name !== "" && formData1.username !== "" && formData1.password !== "" && formData1.userNewPassword !== "") {
             if (formData1.userPassword === formData1.userNewPassword && formData1.userPassword.length >= 6) {
 
                dispatch(signUp(formData1));
@@ -150,9 +151,9 @@ const Profile = () => {
 
       } else {
 
-         if (formData3.name !== "" && formData3.lastname !== "" && formData3.phone != "" && formData3.email != "" && formData3.dni != "") {
+         if (formData3.name !== "" && formData3.lastname !== "" && formData3.phone !== "" && formData3.email !== "" && formData3.dni !== "") {
 
-               dispatch(createClient(formData3));
+            dispatch(createClient(formData3));
 
          } else {
 
@@ -305,6 +306,11 @@ const Profile = () => {
                </form>
             </div>
          </div>
+
+
+
+         <Footer />
+
 
 
       </>

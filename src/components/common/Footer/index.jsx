@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { startLogout } from '../../../actions/auth'
-import { routes } from '../../../config/routes';
+import { routes } from '../../../config/constant';
 import './styles.css';
 
 const Footer = () => {

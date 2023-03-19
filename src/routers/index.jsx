@@ -7,7 +7,7 @@ import { PrivateRoutes } from './PrivateRoutes';
 import Login from '../pages/Login';
 import LoggedRoutes from './LoggedRoutes'
 import { login, startLogout } from '../actions/auth';
-import { routes } from '../config/routes';
+import { routes } from '../config/constant';
 
 function AppRouter() {
 
@@ -43,7 +43,7 @@ function AppRouter() {
 
     if (checking) {
         return (
-            <h1>Espere...</h1>
+            <h1>Waiting for a response...</h1>
         )
     }
 
