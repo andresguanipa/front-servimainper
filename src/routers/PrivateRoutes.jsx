@@ -8,6 +8,6 @@ export const PrivateRoutes = ({ children }) => {
 
     return auth !== '' ?
         children
-        : <Navigate to={routes.login} />
+        : <Navigate to={routes.login} replace={true} />
 
 }
