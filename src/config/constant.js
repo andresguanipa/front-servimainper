@@ -8,10 +8,10 @@ const types = {
 }
 
 const routes = {
-    login: '/front-servimainper/login',
-    home: '/front-servimainper/',
-    payment: '/front-servimainper/payment/:id',
-    register: '/front-servimainper/register',
+    login: '/login',
+    home: '/',
+    payment: '/payment/:id',
+    register: '/register',
     notFound: '/*',
 }
 

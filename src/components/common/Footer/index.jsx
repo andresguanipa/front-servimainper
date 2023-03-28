@@ -2,15 +2,18 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { startLogout } from '../../../actions/auth'
 import { routes } from '../../../config/constant';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './styles.css';
 
 const Footer = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         dispatch(startLogout());
+        navigate("../login", { replace: true });
+
     }
 
 
