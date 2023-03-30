@@ -12,8 +12,6 @@ const Footer = () => {
 
     const handleLogout = () => {
         dispatch(startLogout());
-        navigate("../login", { replace: true });
-
     }
 
 
@@ -38,7 +36,7 @@ const Footer = () => {
                 <div className="footer-menu">
                     <ul className="f-menu">
 
-                        <li onClick={handleLogout}><a href=""><b>Logout</b></a></li>
+                        <li onClick={handleLogout}><a href=''><b>Logout</b></a></li>
 
                     </ul>
                 </div>
