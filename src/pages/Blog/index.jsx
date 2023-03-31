@@ -37,9 +37,9 @@ const Blog = () => {
 
           console.log(res.data);
 
-          let months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+          let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
           let date = new Date(res.data.data.createdAt);
-          const fecha = `${date.getDate()} de ${months[date.getMonth()]} de ${date.getFullYear()}`;
+          const fecha = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 
           setBlog({
             data: true,
@@ -51,11 +51,9 @@ const Blog = () => {
             confirmationNumber: res.data.data.confirmationNumber
           });
 
-          TabTitle(`${res.data.data.title} | SERVIMAINPER`);
+          TabTitle(`${res.data.data.confirmationNumber} | SERVIMAINPER`);
 
         } else {
-
-
 
           setBlog({ data: false });
           navigate("../", { replace: true });
@@ -83,7 +81,7 @@ const Blog = () => {
           (
             <div className='blog-wrap' data-aos-delay="200" data-aos="fade-right">
               <header>
-                <p className='blog-date'>Publicado el {blog.createdAt}</p>
+                <p className='blog-date'>Uploaded on {blog.createdAt}</p>
                 <h1>Client: {blog.client} (DNI: {blog.dni})</h1>
                 <br />
               </header>
