@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { startLogout } from '../../../actions/auth'
 import { routes } from '../../../config/constant';
@@ -8,11 +8,14 @@ import './styles.css';
 const Footer = () => {
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const handleLogout = () => {
         dispatch(startLogout());
     }
+
+    useEffect(() => {
+        console.log(window.location.pathname);
+    }, [])
 
 
     return (
@@ -33,13 +36,23 @@ const Footer = () => {
                     </Link>
                 </p>
 
-                <div className="footer-menu">
-                    <ul className="f-menu">
+                {
+                    window.location.pathname != '/register' ?
 
-                        <li onClick={handleLogout}><a href=''><b>Logout</b></a></li>
+                        <div className="footer-menu">
+                            <ul className="f-menu">
 
-                    </ul>
-                </div>
+                                <li onClick={handleLogout}><a href=''><b>Logout</b></a></li>
+
+                            </ul>
+                        </div>
+
+                        :
+
+                        <></>
+
+                }
+
             </div>
 
         </footer>
