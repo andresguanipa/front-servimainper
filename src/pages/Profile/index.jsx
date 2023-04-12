@@ -265,7 +265,7 @@ const Profile = () => {
                               <>
                                  <div className="field">
                                     <input type="text" name="dni" onChange={handleChangeClient} value={formData3.dni} autoComplete="on" required></input>
-                                    <label>DNI</label>
+                                    <label>Invoice #</label>
                                  </div>
 
                                  <div className="field">

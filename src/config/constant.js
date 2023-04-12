@@ -12,6 +12,7 @@ const routes = {
     home: '/',
     payment: '/payment/:id',
     register: '/register',
+    clients: '/clients',
     notFound: '/*',
 }
 

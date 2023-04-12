@@ -5,6 +5,7 @@ import Home from '../pages/Home';
 import Profile from '../pages/Profile';
 import NotFound from '../pages/NotFound';
 import { routes } from '../config/constant';
+import Clients from '../pages/Clients';
 
 function LoggedRoutes() {
 
@@ -13,6 +14,7 @@ function LoggedRoutes() {
             <Route path={routes.home} exact element={<Home />} />
             <Route path={routes.payment} element={<Blog />} />
             <Route path={routes.register} element={<Profile />} />
+            {/* <Route path={routes.clients} element={<Clients />} /> */}
             <Route path={routes.notFound} element={<NotFound />}></Route>
         </Routes>
     )

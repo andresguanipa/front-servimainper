@@ -29,11 +29,14 @@ const Footer = () => {
             <div className="footer-bottom">
                 <p>
                     <Link className='blogItem-link' to={routes.home}>
-                        <b>Home</b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>Home</b>&nbsp; &nbsp; &nbsp; &nbsp; 
                     </Link>
                     <Link className='blogItem-link' to={routes.register}>
-                        <b>Register</b>
+                        <b>Register</b>&nbsp; &nbsp; &nbsp; &nbsp;
                     </Link>
+                    {/* <Link className='blogItem-link' to={routes.clients}>
+                        <b>Clients</b>
+                    </Link> */}
                 </p>
 
                 {
